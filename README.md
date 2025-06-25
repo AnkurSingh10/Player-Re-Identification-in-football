@@ -14,7 +14,7 @@ This project implements a cross-camera player tracking system using a fine-tuned
 pip install -r Requirements.txt
 ```
 
-Contents of `requirements.txt`:
+Contents of `Requirements.txt`:
 ```
 torch
 opencv-python
