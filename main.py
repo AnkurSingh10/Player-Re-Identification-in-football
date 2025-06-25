@@ -20,10 +20,10 @@ import pickle
 
 ## Loading Model 
 
-model = YOLO("/kaggle/input/yolo_fintuned/pytorch/default/1/best.pt")  
+model = YOLO("best.pt")  
 
-results_broadcast = model("/kaggle/input/videos/broadcast.mp4", stream=True)
-results_tacticam = model("/kaggle/input/videos/tacticam.mp4", stream=True)
+results_broadcast = model("broadcast.mp4", stream=True)
+results_tacticam = model("tacticam.mp4", stream=True)
 
 ## Embeddings
 
@@ -207,8 +207,8 @@ def overlay_ids_on_video(source_name, player_data):
     print(f"🎥 Visualization saved: {output_path}")
 
 
-extract_embeddings_from_video("/kaggle/input/videos/broadcast.mp4", "broadcast")
-extract_embeddings_from_video("/kaggle/input/videos/tacticam.mp4", "tacticam")
+extract_embeddings_from_video("broadcast.mp4", "broadcast")
+extract_embeddings_from_video("tacticam.mp4", "tacticam")
 
 ## Load and save combined player embeddings
 combined = load_all_embeddings()
@@ -224,10 +224,10 @@ def get_similarity_score(embed1, embed2):
 
 
 
-with open("/kaggle/working/output/realtime_embeddings_broadcast.pkl", "rb") as f:
+with open("/output/realtime_embeddings_broadcast.pkl", "rb") as f:
     broadcast_embeds = pickle.load(f)
 
-with open("/kaggle/working/output/realtime_embeddings_tacticam.pkl", "rb") as f:
+with open("/output/realtime_embeddings_tacticam.pkl", "rb") as f:
     tacticam_embeds = pickle.load(f)
 
 def cross_camera_id_assignment(broadcast, tacticam, threshold=0.95):
@@ -264,5 +264,5 @@ mapped_detections = cross_camera_id_assignment(broadcast_embeds, tacticam_embeds
 with open(f"{BASE_DIR}/final_mapped_players.pkl", "wb") as f:
     pickle.dump(mapped_detections, f)
 
-print("\n✅ Cross-camera player mapping complete. Output saved in:")
+print("\nCross-camera player mapping complete. Output saved in:")
 print(f"- {BASE_DIR}/final_mapped_players.pkl")
