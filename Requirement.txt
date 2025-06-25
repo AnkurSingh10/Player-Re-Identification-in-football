@@ -1,0 +1,8 @@
+torch
+opencv-python
+tensorflow
+keras
+ultralytics
+scikit-learn
+deep_sort_realtime
+pickle
