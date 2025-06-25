@@ -11,7 +11,7 @@ This project implements a cross-camera player tracking system using a fine-tuned
 
 ### 2. Install Dependencies
 ```bash
-pip install -r requirements.txt
+pip install -r Requirements.txt
 ```
 
 Contents of `requirements.txt`:
